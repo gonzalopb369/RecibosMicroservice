@@ -56,6 +56,7 @@ namespace ControlRecibos.WebApi.Controllers
 
 
 		[HttpDelete]
+		[Route("{id:guid}")]
 		public async Task<IActionResult> DeleteReciboById([FromRoute] EliminarReciboCommand command)
 		{
 			Guid vId = await _mediator.Send(command);
