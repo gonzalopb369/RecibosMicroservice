@@ -13,16 +13,10 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using System.Text.Json;
-//using System.Text.Json.Serialization;
-//using ControlRecibos.Domain.Utils;
-using Amazon.SimpleNotificationService.Model;
-//using Amazon.SQS.Internal;
-//using System.Collections.Generic;
 using System.Text.Json.Nodes;
 using Newtonsoft.Json;
-using ControlRecibos.Domain.Model.Recibos;
 using Newtonsoft.Json.Linq;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+
 
 namespace ControlRecibos.WebApi.Controllers
 {
@@ -121,7 +115,7 @@ namespace ControlRecibos.WebApi.Controllers
 
 				OPago = new PagoDto()
 				{
-					Id = vid,//id pago					
+					Id = vid,
 					NombPasajero = vNombPasajero,
 					ReservationNumber = vreservationNumber,
 					originalValue = vOriginalValue,
