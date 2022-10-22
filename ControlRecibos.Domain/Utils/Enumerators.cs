@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 //}
 
 
-namespace ControlRecibos.Domain.Utils {
+namespace ControlRecibos.Domain.Utils
+{
 	/// <summary>
 	/// Enumera todos los estados generales
 	/// </summary>
@@ -32,7 +33,8 @@ namespace ControlRecibos.Domain.Utils {
 	/// <summary>
 	/// Enumera todos los tipos de usuarios
 	/// </summary>
-	public enum EstadoRecibo {
+	public enum EstadoRecibo
+	{
 		/// <summary>
 		/// Recibo por una Reserva pendiente de pago
 		/// </summary>

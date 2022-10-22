@@ -7,21 +7,26 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Infraestructure.EF.Repository {
-	public class ReciboRepository : IReciboRepository {
+namespace ControlRecibos.Infraestructure.EF.Repository
+{
+	public class ReciboRepository : IReciboRepository
+	{
 		public readonly DbSet<Recibo> _recibos;
 
-		public ReciboRepository(WriteDbContext context) {
+		public ReciboRepository(WriteDbContext context)
+		{
 			_recibos = context.Recibo;
 		}
 
 
-		public async Task CreateAsync(Recibo obj) {
+		public async Task CreateAsync(Recibo obj)
+		{
 			await _recibos.AddAsync(obj);
 		}
 
 
-		public async Task<Recibo> FindByIdAsync(Guid id) {
+		public async Task<Recibo> FindByIdAsync(Guid id)
+		{
 			return await _recibos.SingleOrDefaultAsync(x => x.Id == id);
 		}
 
@@ -33,13 +38,15 @@ namespace ControlRecibos.Infraestructure.EF.Repository {
 
 
 
-		public Task RemoveAsync(Recibo obj) {
+		public Task RemoveAsync(Recibo obj)
+		{
 			_recibos.Remove(obj);
 			return Task.CompletedTask;
 		}
 
 
-		public Task UpdateAsync(Recibo obj) {
+		public Task UpdateAsync(Recibo obj)
+		{
 			_recibos.Update(obj);
 			return Task.CompletedTask;
 		}

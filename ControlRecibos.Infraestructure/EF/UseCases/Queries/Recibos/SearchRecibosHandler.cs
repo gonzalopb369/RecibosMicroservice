@@ -12,17 +12,21 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Infraestructure.EF.UseCases.Queries.Recibos {
+namespace ControlRecibos.Infraestructure.EF.UseCases.Queries.Recibos
+{
 	public class SearchRecibosHandler :
-			 IRequestHandler<SearchRecibosQuery,ICollection<ReciboDto>> {
+			 IRequestHandler<SearchRecibosQuery,ICollection<ReciboDto>>
+	{
 		private readonly DbSet<ReciboReadModel> _recibos;
 
-		public SearchRecibosHandler(ReadDbContext context) {
+		public SearchRecibosHandler(ReadDbContext context)
+		{
 			_recibos = context.Recibo;
 		}
 
 
-		public async Task<ICollection<ReciboDto>> Handle(SearchRecibosQuery request,CancellationToken cancellationToken) {
+		public async Task<ICollection<ReciboDto>> Handle(SearchRecibosQuery request,CancellationToken cancellationToken)
+		{
 			var reciboList = await _recibos
 							.AsNoTracking()
 							//.Where(x => x.NroRecibo == request.NroRecibo)
@@ -31,8 +35,10 @@ namespace ControlRecibos.Infraestructure.EF.UseCases.Queries.Recibos {
 
 			//!!! CORREGIR esto xq no es una coleccion ni tiene detalle
 			var result = new List<ReciboDto>();
-			foreach (var objRecibo in reciboList) {
-				var reciboDto = new ReciboDto() {
+			foreach (var objRecibo in reciboList)
+			{
+				var reciboDto = new ReciboDto()
+				{
 					Id = objRecibo.Id,
 					NroRecibo = objRecibo.NroRecibo,
 					FechaPago = objRecibo.FechaPago,

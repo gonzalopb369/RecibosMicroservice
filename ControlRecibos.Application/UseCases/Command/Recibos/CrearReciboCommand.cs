@@ -3,8 +3,10 @@ using System;
 
 
 
-namespace ControlRecibos.Application.UseCases.Command.Recibos {
-	public class CrearReciboCommand : IRequest<Guid> {
+namespace ControlRecibos.Application.UseCases.Command.Recibos
+{
+	public class CrearReciboCommand : IRequest<Guid>
+	{
 		//public Guid Id { get; set; }
 		public int NroRecibo { get; set; }
 		public DateTime FechaPago { get; set; }
@@ -17,13 +19,15 @@ namespace ControlRecibos.Application.UseCases.Command.Recibos {
 		public int Estado { get; set; }
 
 
-		private CrearReciboCommand() {
+		private CrearReciboCommand()
+		{
 		}
 
 
 		public CrearReciboCommand(int nroRecibo,DateTime fechaPago,string nombrePasajero,
 					Guid codigoReserva,string concepto,decimal montoTotal,
-					decimal aCuenta,decimal saldo,int estado) {
+					decimal aCuenta,decimal saldo,int estado)
+		{
 			NroRecibo = nroRecibo;
 			FechaPago = fechaPago;
 			NombrePasajero = nombrePasajero;

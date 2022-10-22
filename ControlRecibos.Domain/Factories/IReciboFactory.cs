@@ -6,9 +6,11 @@ using System;
 //using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Domain.Factories {
+namespace ControlRecibos.Domain.Factories
+{
 	//!!! verificar si va este factory en este caso
-	public interface IReciboFactory {
+	public interface IReciboFactory
+	{
 		//Recibo Create(int nroRecibo);
 
 		Recibo CrearRecibo(int nroRecibo,DateTime fechaPago,string nombrePasajero,

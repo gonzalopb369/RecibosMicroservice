@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ControlRecibos.Application.UseCases.Queries.Recibos.SearchRecibos
 {
-	public class SearchRecibosHandler : IRequestHandler<SearchRecibosQuery, List<ReciboDto>>
+	public class SearchRecibosHandler : IRequestHandler<SearchRecibosQuery,List<ReciboDto>>
 	{
 		private readonly IReciboRepository _reciboRepository;
 		private readonly ILogger<SearchRecibosQuery> _logger;

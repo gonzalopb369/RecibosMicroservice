@@ -15,10 +15,13 @@ using System.Reflection;
 //using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Infraestructure {
-	public static class Extensions {
+namespace ControlRecibos.Infraestructure
+{
+	public static class Extensions
+	{
 		public static IServiceCollection AddInfrastructure(this IServiceCollection services,
-				IConfiguration configuration) {
+				IConfiguration configuration)
+		{
 			services.AddApplication();
 			services.AddMediatR(Assembly.GetExecutingAssembly());
 

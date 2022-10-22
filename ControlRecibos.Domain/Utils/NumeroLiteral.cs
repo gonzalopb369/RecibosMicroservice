@@ -18,23 +18,27 @@ namespace ControlRecibos.Domain.Utils
 		{
 		}
 
-		public string Cadena {
+		public string Cadena
+		{
 			set { numero = value; }
 			get { return numero; }
 		}
 
-		private int CantidadComas {
+		private int CantidadComas
+		{
 			get { return numeroComas; }
 		}
 
-		private string GetFracciones() {
+		private string GetFracciones()
+		{
 			int tamaño = 0;
 			int largo = 0;
 			int res = 0;
 			string elDecimal;
 			largo = numero.Length - 1;
 			tamaño = numero.IndexOf(Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator);
-			if (tamaño != -1) {
+			if (tamaño != -1)
+			{
 				res = largo - tamaño;
 				elDecimal = numero.Substring(tamaño + 1,res);
 				return elDecimal;
@@ -43,11 +47,13 @@ namespace ControlRecibos.Domain.Utils
 
 		}
 
-		private string GetNumeroEntero() {
+		private string GetNumeroEntero()
+		{
 			int indPunto = 0;
 			string elEntero;
 			indPunto = numero.IndexOf(Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator);
-			if (indPunto >= 0) {
+			if (indPunto >= 0)
+			{
 				if (indPunto == 0) elEntero = "0";
 				else elEntero = numero.Substring(0,indPunto);
 				return elEntero;
@@ -55,11 +61,13 @@ namespace ControlRecibos.Domain.Utils
 			else return numero;
 		}
 
-		private string GetMiles() {
+		private string GetMiles()
+		{
 			int comaUno = GetIndiceComaUno() + 1;
 			int comaDos = GetIndiceComaDos() + 1;
 			string losMiles = "";
-			if (numeroComas == 2) {
+			if (numeroComas == 2)
+			{
 				// OJOJOOOOOOOOOOOOOO
 				losMiles = numero.Substring(comaUno,3);
 				if (losMiles == "000") losMiles = "";
@@ -67,8 +75,10 @@ namespace ControlRecibos.Domain.Utils
 				return losMiles;
 
 			}
-			else {
-				if (numeroComas == 1) {
+			else
+			{
+				if (numeroComas == 1)
+				{
 					losMiles = numero.Substring(0,comaUno - 1);
 					return losMiles;
 				}
@@ -78,32 +88,39 @@ namespace ControlRecibos.Domain.Utils
 
 		}
 
-		private void GetNumeroComas() {
+		private void GetNumeroComas()
+		{
 			numeroComas = 0;
-			for (int i = 0; i < numero.Length; i++) {
+			for (int i = 0; i < numero.Length; i++)
+			{
 				if (numero[i].ToString() == Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator) numeroComas++;
 
 			}
 		}
 
 		//
-		private int GetIndiceComaUno() {
+		private int GetIndiceComaUno()
+		{
 			int indice = 0;
 			indice = numero.IndexOf(Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator);
 			return indice;
 		}
 
-		private int GetIndiceComaDos() {
+		private int GetIndiceComaDos()
+		{
 			int indice = 0;
-			for (int i = 0; i < numero.Length; i++) {
+			for (int i = 0; i < numero.Length; i++)
+			{
 				if (numero[i].ToString() == Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator && i > 1) indice = i;
 			}
 			return indice;
 		}
 
 		//
-		private bool hayPuntoDecimal() {
-			if (numero.IndexOf(Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator) >= 0) {
+		private bool hayPuntoDecimal()
+		{
+			if (numero.IndexOf(Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator) >= 0)
+			{
 				return true;
 
 			}
@@ -112,9 +129,11 @@ namespace ControlRecibos.Domain.Utils
 		}
 
 		#region GENERA LOS LITERALES
-		private string GetLiteralUnidades(int numeroX) {
+		private string GetLiteralUnidades(int numeroX)
+		{
 			string dato = "";
-			switch (numeroX) {
+			switch (numeroX)
+			{
 				case 0:
 					dato = "Cero";
 					break;
@@ -149,9 +168,11 @@ namespace ControlRecibos.Domain.Utils
 			return dato;
 		}
 
-		private string GetLiteralDecenaSingle(int numeroX) {
+		private string GetLiteralDecenaSingle(int numeroX)
+		{
 			string dato = "";
-			switch (numeroX) {
+			switch (numeroX)
+			{
 				case 1:
 					dato = "Diez";
 					break;
@@ -183,9 +204,11 @@ namespace ControlRecibos.Domain.Utils
 			return dato;
 		}
 
-		private string GetLiteralDecena(int numeroX) {
+		private string GetLiteralDecena(int numeroX)
+		{
 			string dato = "";
-			switch (numeroX) {
+			switch (numeroX)
+			{
 				case 10:
 					dato = "Diez";
 					break;
@@ -244,10 +267,12 @@ namespace ControlRecibos.Domain.Utils
 			return dato;
 		}
 
-		private string GetLiteralCentena(int numeroX) {
+		private string GetLiteralCentena(int numeroX)
+		{
 			string dato = "";
 
-			switch (numeroX) {
+			switch (numeroX)
+			{
 				case 100:
 					dato = "Cien";
 					break;
@@ -279,9 +304,11 @@ namespace ControlRecibos.Domain.Utils
 			}
 			return dato;
 		}
-		private string GetLiteralCentenaSingle(int numeroX) {
+		private string GetLiteralCentenaSingle(int numeroX)
+		{
 			string dato = "";
-			switch (numeroX) {
+			switch (numeroX)
+			{
 				case 1:
 					dato = "Ciento";
 					break;
@@ -314,21 +341,25 @@ namespace ControlRecibos.Domain.Utils
 			}
 			return dato;
 		}
-		private string GetLiteralMiles(string milX) {
+		private string GetLiteralMiles(string milX)
+		{
 			//int indice = 0;
 			int valor;
 			string milSinComas = "";
 			string dato = "";
 			string laCentena;
-			if (numeroComas > 0) {
+			if (numeroComas > 0)
+			{
 				laCentena = GetCentena();
 				milSinComas = GetEnterosSinComas();
 				valor = Convert.ToInt32(milSinComas);
 			}
-			else {
+			else
+			{
 				valor = Convert.ToInt16(milX);
 			}
-			switch (valor) {
+			switch (valor)
+			{
 				case 1000:
 					dato = "Mil";
 					break;
@@ -360,9 +391,11 @@ namespace ControlRecibos.Domain.Utils
 			}
 			return dato;
 		}
-		private string GetLiteralMilesSingle(int numeroX) {
+		private string GetLiteralMilesSingle(int numeroX)
+		{
 			string dato = "";
-			switch (numeroX) {
+			switch (numeroX)
+			{
 				case 1:
 					dato = "Mil";
 					break;
@@ -394,9 +427,11 @@ namespace ControlRecibos.Domain.Utils
 			}
 			return dato;
 		}
-		private string GetLiteralMillonesSingle(int numeroX) {
+		private string GetLiteralMillonesSingle(int numeroX)
+		{
 			string dato = "";
-			switch (numeroX) {
+			switch (numeroX)
+			{
 				case 1:
 					dato = "Un Millon";
 					break;
@@ -428,10 +463,12 @@ namespace ControlRecibos.Domain.Utils
 			}
 			return dato;
 		}
-		private string GetLiteralMillones(string millonXY) {
+		private string GetLiteralMillones(string millonXY)
+		{
 			string dato = "";
 			int numero = Convert.ToInt32(millonXY);
-			switch (numero) {
+			switch (numero)
+			{
 				case 1000000:
 					dato = "Un Millon";
 					break;
@@ -465,35 +502,44 @@ namespace ControlRecibos.Domain.Utils
 		}
 		#endregion
 
-		private string GetMillon() {
+		private string GetMillon()
+		{
 			string elMil = "";
 			int firstComa = GetIndiceComaUno();
-			if (numeroComas == 2) {
+			if (numeroComas == 2)
+			{
 				elMil = numero.Substring(0,firstComa);
 				return elMil;
 			}
 			else return "0";
 		}
-		private string GetCentena() {
+		private string GetCentena()
+		{
 			string lacentena = "";
 			int firstComa = GetIndiceComaUno() + 1;
 			int comaDos = GetIndiceComaDos() + 1;
-			if (numeroComas == 2) {
-				if (hayPuntoDecimal()) {
+			if (numeroComas == 2)
+			{
+				if (hayPuntoDecimal())
+				{
 					//int pto = numero.IndexOf(Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator);
 					lacentena = numero.Substring(comaDos,3);
 				}
-				else {
+				else
+				{
 					lacentena = numero.Substring(comaDos);
 
 				}
 
 			}
-			else if (numeroComas == 1) {
-				if (hayPuntoDecimal()) {
+			else if (numeroComas == 1)
+			{
+				if (hayPuntoDecimal())
+				{
 					lacentena = numero.Substring(firstComa,3);
 				}
-				else {
+				else
+				{
 					lacentena = numero.Substring(firstComa);
 
 				}
@@ -501,42 +547,53 @@ namespace ControlRecibos.Domain.Utils
 			}
 			return lacentena;
 		}
-		private string GetElDecimal(string decenaX) {
+		private string GetElDecimal(string decenaX)
+		{
 			return decenaX.Substring(1,2);
 		}
-		private string GetRestoMiles(string milesX) {
+		private string GetRestoMiles(string milesX)
+		{
 			int laComaUno = GetIndiceComaUno() + 1;
 			int laComaDos = GetIndiceComaDos() + 1;
 			string resto = "";
-			if (numeroComas == 2) {
+			if (numeroComas == 2)
+			{
 				resto = numero.Substring(laComaDos,3); //milesX.Substring(laComaDos,3);
 			}
-			else if (numeroComas == 1) {
-				if (hayPuntoDecimal()) {
+			else if (numeroComas == 1)
+			{
+				if (hayPuntoDecimal())
+				{
 					resto = numero.Substring(laComaUno,3);// MODIFICADO  'NUMERO/MILES-X'
 				}
-				else {
+				else
+				{
 					resto = numero.Substring(laComaUno);
 				}
 			}
 			return resto;
 		}
 
-		private string GetRestoMillon(string millonX) {
+		private string GetRestoMillon(string millonX)
+		{
 			string restoMillon = "";
 			int comaUno = GetIndiceComaUno() + 1;
-			if (numeroComas == 2) {
+			if (numeroComas == 2)
+			{
 				restoMillon = millonX.Substring(comaUno);
 				return restoMillon;
 			}
 			else return restoMillon;
 
 		}
-		private string GetEnterosSinComas() {
+		private string GetEnterosSinComas()
+		{
 			string sinComas = GetNumeroEntero();
 			string elNumero = "";
-			for (int i = 0; i < sinComas.Length; i++) {
-				if (sinComas[i].ToString() != Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator) {
+			for (int i = 0; i < sinComas.Length; i++)
+			{
+				if (sinComas[i].ToString() != Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator)
+				{
 					elNumero += Convert.ToString(sinComas[i]);
 				}
 			}
@@ -547,7 +604,8 @@ namespace ControlRecibos.Domain.Utils
          * SOLO DEBES PASARLE A ESTE METODO EL --NUMERO-- QUE DESEAS TRANSFORMAR; PERO 
          * PREVIAMENTE DEBES CARGAR EL NUMERO ATRAVEZ DEL METODO --CADENA--
          */
-		public string GetLiteral(string datoX) {
+		public string GetLiteral(string datoX)
+		{
 			this.numero = datoX;
 			string literalX = "";
 			string centenas = "";
@@ -560,23 +618,29 @@ namespace ControlRecibos.Domain.Utils
 			GetNumeroComas();
 			string fraccionY = GetFracciones();
 			//SI ES MILLON????==> ESCRIBE MILLONES
-			if (numeroComas == 2) {
+			if (numeroComas == 2)
+			{
 				millones = makeLiteralMillones(datoX);
 
 			}
 			//SI SON MILES ???? ==> ESCRIBE MIL
-			if (numeroComas == 1) {
+			if (numeroComas == 1)
+			{
 				miles = makeLiteralMiles(datoX);
 
 			}
-			else {
-				if (hayPuntoDecimal()) {
+			else
+			{
+				if (hayPuntoDecimal())
+				{
 					string elCero = "";
-					if (fraccionY.Length == 1) {
+					if (fraccionY.Length == 1)
+					{
 						elCero = "0";
 					}
 					elEntero = GetNumeroEntero();
-					switch (elEntero.Length) {
+					switch (elEntero.Length)
+					{
 						case 1:
 							unidades = makeLiteralUnidad(elEntero);
 							centenaY = unidades + " con " + elCero + fraccionY + "/100 ";
@@ -592,8 +656,10 @@ namespace ControlRecibos.Domain.Utils
 
 					}
 				}
-				else {
-					switch (datoX.Length) {
+				else
+				{
+					switch (datoX.Length)
+					{
 						case 1:
 							unidades = makeLiteralUnidad(datoX);
 							centenaY = unidades + " con 00/100 ";
@@ -615,7 +681,8 @@ namespace ControlRecibos.Domain.Utils
 
 		}
 		// MAKERS
-		private string makeLiteralMillones(string numeroX) {
+		private string makeLiteralMillones(string numeroX)
+		{
 			string elMillon = GetMillon();
 			string restoMillones = GetRestoMillon(numeroX);
 			string laCadena = "";
@@ -623,20 +690,25 @@ namespace ControlRecibos.Domain.Utils
 			//
 			string sinComas = GetEnterosSinComas();
 			string esMillon = GetLiteralMillones(sinComas);
-			if (esMillon != "") {
+			if (esMillon != "")
+			{
 				laCadena = esMillon;
 			}
-			else {
-				if (elMillon.Length == 3) {
+			else
+			{
+				if (elMillon.Length == 3)
+				{
 					laCadena = makeLiteralCentenas(elMillon) + " Millones ";
 
 				}
-				if (elMillon.Length == 2) {
+				if (elMillon.Length == 2)
+				{
 					literalDecimal = makeLiteralDecenas(elMillon);
 					laCadena = literalDecimal + " Millones ";
 
 				}
-				if (elMillon.Length == 1) {
+				if (elMillon.Length == 1)
+				{
 					laCadena = GetLiteralUnidades(Convert.ToInt16(elMillon));
 					if (laCadena == "Uno") laCadena = " Un Millon ";
 					else laCadena += " Millones ";
@@ -648,7 +720,8 @@ namespace ControlRecibos.Domain.Utils
 
 
 		}
-		private string makeLiteralMiles(string numeroX) {
+		private string makeLiteralMiles(string numeroX)
+		{
 			string elResto = GetRestoMiles(numeroX);
 			string midecena = GetElDecimal(elResto);
 			string losMiles = GetMiles();
@@ -658,35 +731,43 @@ namespace ControlRecibos.Domain.Utils
 			string laCadena = "";
 			string lafraccion = "";
 			string esMil = GetLiteralMiles(numeroX);
-			if (esMil != "") {
+			if (esMil != "")
+			{
 				laCadena = esMil;
 			}
-			else {
-				if (losMiles.Length == 3) {
+			else
+			{
+				if (losMiles.Length == 3)
+				{
 					// ojojooooo
 					if (losMiles != "") laCadena = makeLiteralCentenas(losMiles) + " Mil ";
 					// else laCadena;
 
 				}
-				if (losMiles.Length == 2) {
+				if (losMiles.Length == 2)
+				{
 					literalDecimal = makeLiteralDecenas(losMiles);
 					laCadena = literalDecimal + " Mil ";
 
 				}
-				if (losMiles.Length == 1) {
+				if (losMiles.Length == 1)
+				{
 					laCadena = GetLiteralUnidades(Convert.ToInt16(losMiles));
 					if (laCadena == "Uno") laCadena = " Un Mil ";
 					else laCadena += " Mil ";
 				}
 				// trabajando el resto
-				if (!hayPuntoDecimal()) {
+				if (!hayPuntoDecimal())
+				{
 					laCadena += makeLiteralCentenas(elResto) + " con 00/100";
 				}
-				else {
+				else
+				{
 					string elCero = "";
 					laCadena += makeLiteralCentenas(laCentena);
 					lafraccion = GetFracciones();
-					if (lafraccion.Length == 1) {
+					if (lafraccion.Length == 1)
+					{
 						elCero = "0";
 					}
 					if (lafraccion == "00") laCadena += " con " + lafraccion + "/100";
@@ -701,17 +782,20 @@ namespace ControlRecibos.Domain.Utils
 
 
 		}
-		private string makeLiteralCentenas(string numeroX) {
+		private string makeLiteralCentenas(string numeroX)
+		{
 			string midecena = GetElDecimal(numeroX);
 			string literalDecimal;
 			string datoY;
 			string laCentena = "";
 			string laCadena = "";
 			laCentena = GetLiteralCentena(Convert.ToInt16(numeroX));
-			if (laCentena != "") {
+			if (laCentena != "")
+			{
 				laCadena = laCentena;
 			}
-			else {
+			else
+			{
 				datoY = Convert.ToString(numeroX[0]);
 				laCadena += "" + GetLiteralCentenaSingle(Convert.ToInt16(datoY));
 				literalDecimal = makeLiteralDecenas(midecena);
@@ -722,18 +806,24 @@ namespace ControlRecibos.Domain.Utils
 
 
 		}
-		private string makeLiteralDecenas(string numeroX) {
+		private string makeLiteralDecenas(string numeroX)
+		{
 			string datoZ = "";
 			string laCadena = "";
 			// SI TIENE SOLO DOS DIGITOS??????
-			if (numeroX.Length == 2) {
+			if (numeroX.Length == 2)
+			{
 				datoZ = GetLiteralDecena(Convert.ToInt16(numeroX));
-				if (datoZ.Length > 0) {
+				if (datoZ.Length > 0)
+				{
 					laCadena = datoZ;
 				}
-				else {
-					for (int i = 0; i < numeroX.Length; i++) {
-						switch (i) {
+				else
+				{
+					for (int i = 0; i < numeroX.Length; i++)
+					{
+						switch (i)
+						{
 							case 0:
 								datoZ = Convert.ToString(numeroX[i]);
 								laCadena += GetLiteralDecenaSingle(Convert.ToInt16(datoZ));
@@ -741,7 +831,8 @@ namespace ControlRecibos.Domain.Utils
 							case 1:
 								datoZ = Convert.ToString(numeroX[i]);
 								if (laCadena == "Veinti") laCadena += " " + GetLiteralUnidades(Convert.ToInt16(datoZ));
-								else {
+								else
+								{
 									if (numeroComas == 2) laCadena += GetLiteralUnidades(Convert.ToInt16(datoZ));
 									else laCadena += " y " + GetLiteralUnidades(Convert.ToInt16(datoZ));
 								}
@@ -753,14 +844,16 @@ namespace ControlRecibos.Domain.Utils
 				}
 			}
 			// si es solo un numero????
-			else if (numeroX.Length == 1) {
+			else if (numeroX.Length == 1)
+			{
 				laCadena = GetLiteralDecenaSingle(Convert.ToInt16(numeroX));
 			}
 
 			return laCadena;
 
 		}
-		private string makeLiteralUnidad(string numeroX) {
+		private string makeLiteralUnidad(string numeroX)
+		{
 			string datoK;
 			string laCadena = "";
 			datoK = Convert.ToString(numeroX[0]);
@@ -768,7 +861,8 @@ namespace ControlRecibos.Domain.Utils
 			return laCadena;
 		}
 
-		public static string ObtenerNumeroLiteral(decimal pMonto,string pFormat,string pNombreMoneda) {
+		public static string ObtenerNumeroLiteral(decimal pMonto,string pFormat,string pNombreMoneda)
+		{
 			nombreMoneda = pNombreMoneda;
 			NumeroLiteral vNumToLiteral = new NumeroLiteral();
 			if (pMonto == 0)

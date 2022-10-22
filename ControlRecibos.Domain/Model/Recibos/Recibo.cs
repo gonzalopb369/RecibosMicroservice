@@ -6,8 +6,10 @@ using ShareKernelRecibos.ValueObjects;
 using System;
 
 
-namespace ControlRecibos.Domain.Model.Recibos {
-	public class Recibo : AggregateRoot<Guid> {
+namespace ControlRecibos.Domain.Model.Recibos
+{
+	public class Recibo : AggregateRoot<Guid>
+	{
 		public NroDocumentoValue NroRecibo { get; private set; }
 		public DateTime FechaPago { get; private set; }
 		public PersonNameValue NombrePasajero { get; private set; }
@@ -19,7 +21,8 @@ namespace ControlRecibos.Domain.Model.Recibos {
 		public int Estado { get; private set; }
 
 
-		private Recibo() {
+		private Recibo()
+		{
 			MontoTotal = 0;
 			ACuenta = 0;
 			Saldo = 0;
@@ -36,9 +39,10 @@ namespace ControlRecibos.Domain.Model.Recibos {
 
 
 		public Recibo(NroDocumentoValue nroRecibo,DateTime fechaPago,
-						PersonNameValue nombrePasajero, Guid codigoReserva,
+						PersonNameValue nombrePasajero,Guid codigoReserva,
 						string concepto,PrecioValue montoTotal,PrecioValue aCuenta,
-						PrecioValue saldo,int estado) {
+						PrecioValue saldo,int estado)
+		{
 			Id = Guid.NewGuid();
 			NroRecibo = nroRecibo;
 			FechaPago = fechaPago;
@@ -72,7 +76,8 @@ namespace ControlRecibos.Domain.Model.Recibos {
 
 
 		// !!! tendria que generarse solo cuando se pago total o no??
-		public void ConsolidarRecibo() {
+		public void ConsolidarRecibo()
+		{
 			var evento = new ReciboCreado(Id,NroRecibo,FechaPago,NombrePasajero,
 									CodigoReserva,Concepto,MontoTotal,ACuenta,Saldo,Estado);
 			AddDomainEvent(evento);

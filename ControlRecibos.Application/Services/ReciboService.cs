@@ -6,8 +6,10 @@ using System;
 using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Application.Services {
-	public class ReciboService : IReciboService {
+namespace ControlRecibos.Application.Services
+{
+	public class ReciboService : IReciboService
+	{
 
 		//public Task<int> GenerarNroReciboAsync() => Task.FromResult(123); 
 

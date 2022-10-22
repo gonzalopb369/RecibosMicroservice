@@ -9,8 +9,10 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Application.UseCases.Command.Recibos {
-	public class CancelarReciboHandler : IRequestHandler<CancelarReciboCommand,Guid> {
+namespace ControlRecibos.Application.UseCases.Command.Recibos
+{
+	public class CancelarReciboHandler : IRequestHandler<CancelarReciboCommand,Guid>
+	{
 		private readonly IReciboRepository _reciboRepository;
 		private readonly ILogger<CancelarReciboHandler> _logger;
 		private readonly IReciboService _reciboService; // No hay este BORRAR!!!?
@@ -19,7 +21,8 @@ namespace ControlRecibos.Application.UseCases.Command.Recibos {
 
 
 		public CancelarReciboHandler(IReciboRepository reciboRepository,ILogger<CancelarReciboHandler> logger,
-			IReciboService reciboService,IReciboFactory reciboFactory,IUnitOfWork unitOfWork) {
+			IReciboService reciboService,IReciboFactory reciboFactory,IUnitOfWork unitOfWork)
+		{
 			_reciboRepository = reciboRepository;
 			_logger = logger;
 			_reciboService = reciboService;
@@ -28,7 +31,8 @@ namespace ControlRecibos.Application.UseCases.Command.Recibos {
 		}
 
 
-		public async Task<Guid> Handle(CancelarReciboCommand request,CancellationToken cancellationToken) {
+		public async Task<Guid> Handle(CancelarReciboCommand request,CancellationToken cancellationToken)
+		{
 			//try
 			//{
 			//    //int nroRecibo = await _reciboService.GenerarNroReciboAsync();

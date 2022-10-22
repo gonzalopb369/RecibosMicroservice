@@ -9,22 +9,28 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Application.UseCases.Queries.Recibos.GetReciboById {
-	public class GetReciboByIdHandler : IRequestHandler<GetReciboByIdQuery,ReciboDto> {
+namespace ControlRecibos.Application.UseCases.Queries.Recibos.GetReciboById
+{
+	public class GetReciboByIdHandler : IRequestHandler<GetReciboByIdQuery,ReciboDto>
+	{
 		private readonly IReciboRepository _reciboRepository;
 		private readonly ILogger<GetReciboByIdQuery> _logger;
 
-		public GetReciboByIdHandler(IReciboRepository reciboRepository,ILogger<GetReciboByIdQuery> logger) {
+		public GetReciboByIdHandler(IReciboRepository reciboRepository,ILogger<GetReciboByIdQuery> logger)
+		{
 			_reciboRepository = reciboRepository;
 			_logger = logger;
 		}
 
 
-		public async Task<ReciboDto> Handle(GetReciboByIdQuery request,CancellationToken cancellationToken) {
+		public async Task<ReciboDto> Handle(GetReciboByIdQuery request,CancellationToken cancellationToken)
+		{
 			ReciboDto result = null;
-			try {
+			try
+			{
 				Recibo objRecibo = await _reciboRepository.FindByIdAsync(request.Id);
-				result = new ReciboDto() {
+				result = new ReciboDto()
+				{
 					Id = objRecibo.Id,
 					NroRecibo = objRecibo.NroRecibo,
 					FechaPago = objRecibo.FechaPago,
@@ -38,7 +44,8 @@ namespace ControlRecibos.Application.UseCases.Queries.Recibos.GetReciboById {
 					ACuentaLiteral = NumeroLiteral.ObtenerNumeroLiteral(objRecibo.ACuenta,"N2","Bolivianos")
 				};
 			}
-			catch (Exception ex) {
+			catch (Exception ex)
+			{
 				_logger.LogError(ex,"Error al obtener Recibo con id: { IdRecibo }",request.Id);
 			}
 			return result;

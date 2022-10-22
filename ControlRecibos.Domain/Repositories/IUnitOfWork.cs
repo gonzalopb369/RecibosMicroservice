@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Domain.Repositories {
-	public interface IUnitOfWork {
+namespace ControlRecibos.Domain.Repositories
+{
+	public interface IUnitOfWork
+	{
 		Task Commit();
 	}
 }

@@ -1,12 +1,16 @@
 using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ControlRecibos.Infraestructure.EF.Migrations {
-	public partial class InitialStructure : Migration {
-		protected override void Up(MigrationBuilder migrationBuilder) {
+namespace ControlRecibos.Infraestructure.EF.Migrations
+{
+	public partial class InitialStructure : Migration
+	{
+		protected override void Up(MigrationBuilder migrationBuilder)
+		{
 			migrationBuilder.CreateTable(
 				name: "Recibo",
-				columns: table => new {
+				columns: table => new
+				{
 					Id = table.Column<Guid>(type: "uniqueidentifier",nullable: false),
 					nroRecibo = table.Column<int>(type: "int",nullable: false),
 					fechaPago = table.Column<DateTime>(type: "DateTime",nullable: false),
@@ -19,12 +23,14 @@ namespace ControlRecibos.Infraestructure.EF.Migrations {
 					saldo = table.Column<decimal>(type: "decimal(12,2)",precision: 12,scale: 2,nullable: false),
 					estado = table.Column<int>(type: "int",nullable: false)
 				},
-				constraints: table => {
+				constraints: table =>
+				{
 					table.PrimaryKey("PK_Recibo",x => x.Id);
 				});
 		}
 
-		protected override void Down(MigrationBuilder migrationBuilder) {
+		protected override void Down(MigrationBuilder migrationBuilder)
+		{
 			migrationBuilder.DropTable(
 				name: "Recibo");
 		}
