@@ -7,9 +7,12 @@ using ShareKernelRecibos.ValueObjects;
 
 
 
-namespace ControlRecibos.Infraestructure.EF.Config.WriteConfig {
-	public class ReciboWriteConfig : IEntityTypeConfiguration<Recibo> {
-		public void Configure(EntityTypeBuilder<Recibo> builder) {
+namespace ControlRecibos.Infraestructure.EF.Config.WriteConfig
+{
+	public class ReciboWriteConfig : IEntityTypeConfiguration<Recibo>
+	{
+		public void Configure(EntityTypeBuilder<Recibo> builder)
+		{
 			builder.ToTable("Recibo");
 			builder.HasKey(x => x.Id);
 
@@ -40,7 +43,7 @@ namespace ControlRecibos.Infraestructure.EF.Config.WriteConfig {
 			//   codigoReserva => new CodReservaValue(codigoReserva)
 			//);
 			builder.Property(x => x.CodigoReserva)
-				//.HasConversion(codigoReservaValueConverter)
+			   //.HasConversion(codigoReservaValueConverter)
 			   .HasMaxLength(100)
 			   .HasColumnName("codigoReserva");
 

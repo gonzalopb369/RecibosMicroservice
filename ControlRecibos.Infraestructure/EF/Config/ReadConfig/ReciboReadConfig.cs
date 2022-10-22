@@ -4,9 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 
 
-namespace ControlRecibos.Infraestructure.EF.Config.ReadConfig {
-	public class ReciboReadConfig : IEntityTypeConfiguration<ReciboReadModel> {
-		public void Configure(EntityTypeBuilder<ReciboReadModel> builder) {
+namespace ControlRecibos.Infraestructure.EF.Config.ReadConfig
+{
+	public class ReciboReadConfig : IEntityTypeConfiguration<ReciboReadModel>
+	{
+		public void Configure(EntityTypeBuilder<ReciboReadModel> builder)
+		{
 			builder.ToTable("Recibo");
 			builder.HasKey(x => x.Id);
 

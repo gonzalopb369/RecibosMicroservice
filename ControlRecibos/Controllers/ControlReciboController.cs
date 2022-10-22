@@ -48,7 +48,7 @@ namespace ControlRecibos.WebApi.Controllers
 		}
 
 
-		
+
 		[Route("{id:guid}")]
 		[HttpGet]
 		public async Task<IActionResult> GetReciboById([FromRoute] GetReciboByIdQuery command)
@@ -60,8 +60,8 @@ namespace ControlRecibos.WebApi.Controllers
 		}
 
 
-		
-		[HttpDelete]		
+
+		[HttpDelete]
 		public async Task<IActionResult> DeleteReciboById([FromRoute] EliminarReciboCommand command)
 		{
 			Guid vId = await _mediator.Send(command);
@@ -71,7 +71,7 @@ namespace ControlRecibos.WebApi.Controllers
 		}
 
 
-				
+
 		[HttpGet]
 		[Route("search")]
 		public async Task<IActionResult> GetAll()
@@ -85,7 +85,7 @@ namespace ControlRecibos.WebApi.Controllers
 
 
 
-		
+
 		[HttpGet]
 		[Route("leerpagos")]
 		public async Task<PagoDto> LeerPagos()
@@ -106,16 +106,16 @@ namespace ControlRecibos.WebApi.Controllers
 				var mensajePassanger = mensajeBody["passanger"];
 				var mensajeBooking = mensajeBody["booking"];
 				string vNombPasajero = (string)mensajePassanger["name"] + (string)mensajePassanger["lastName"];
-				Guid vid = (Guid)mensajePayment["id"];				
+				Guid vid = (Guid)mensajePayment["id"];
 				var mensajeAmount = mensajePayment["amount"];
-				int vAmount = (Int32)mensajeAmount["data"];				
+				int vAmount = (Int32)mensajeAmount["data"];
 				Guid vbooking = (Guid)mensajePayment["booking"];
 				DateTime vdate = (DateTime)mensajeBooking["date"];
 				var mensajeResNumber = mensajeBooking["reservationNumber"];
 				string vreservationNumber = (string)mensajeResNumber["data"];
 				var mensajeAccountReceivable = mensajeBooking["accountReceivable"];
 				var mensajeOriginalValue = mensajeAccountReceivable["originalValue"];
-				int vOriginalValue = (Int32)mensajeOriginalValue["data"];				
+				int vOriginalValue = (Int32)mensajeOriginalValue["data"];
 				var mensajeCurrentValue = mensajeAccountReceivable["currentValue"];
 				int vcurrentValue = (Int32)mensajeCurrentValue["data"];
 
@@ -129,7 +129,7 @@ namespace ControlRecibos.WebApi.Controllers
 					Amount = vAmount,
 					Booking = vbooking,
 					Date = vdate
-				};				
+				};
 				return OPago;
 			}
 			else
@@ -145,8 +145,8 @@ namespace ControlRecibos.WebApi.Controllers
 			return await sqsClient.ReceiveMessageAsync(new ReceiveMessageRequest
 			{
 				QueueUrl = qUrl,
-				MaxNumberOfMessages = 10, 
-				WaitTimeSeconds = waitTime				
+				MaxNumberOfMessages = 10,
+				WaitTimeSeconds = waitTime
 			});
 		}
 
@@ -156,6 +156,6 @@ namespace ControlRecibos.WebApi.Controllers
 			Console.WriteLine($"\nDeleting message {message.MessageId} from queue...");
 			await sqsClient.DeleteMessageAsync(qUrl,message.ReceiptHandle);
 		}
-		
+
 	}
 }

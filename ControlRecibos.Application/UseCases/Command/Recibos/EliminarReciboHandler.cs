@@ -38,7 +38,7 @@ namespace ControlRecibos.Application.UseCases.Command.Recibos
 		public async Task<Guid> Handle(EliminarReciboCommand request,CancellationToken cancellationToken)
 		{
 			try
-			{				
+			{
 				//bool exito = _reciboFactory.EliminarRecibo(request.Id);
 				Recibo objRecibo = _reciboFactory.EliminarRecibo(request.ORecibo);
 				//Recibo objRecibo = _reciboFactory.CrearRecibo(nroRecibo, //nroRecibo !!! Tiene que generar nro. recibo!,
@@ -53,7 +53,7 @@ namespace ControlRecibos.Application.UseCases.Command.Recibos
 					await _unitOfWork.Commit();
 					return objRecibo.Id;
 				}
-				
+
 			}
 			catch (Exception ex)
 			{

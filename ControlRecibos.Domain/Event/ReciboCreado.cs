@@ -7,8 +7,10 @@ using System;
 //using System.Text;
 //using System.Threading.Tasks;
 
-namespace ControlRecibos.Domain.Event {
-	public record ReciboCreado : DomainEvent {
+namespace ControlRecibos.Domain.Event
+{
+	public record ReciboCreado : DomainEvent
+	{
 		public Guid IdRecibo { get; } // Como es inmutable no va tener "set"
 		public NroDocumentoValue NroRecibo { get; }
 		public DateTime FechaPago { get; }
@@ -22,9 +24,10 @@ namespace ControlRecibos.Domain.Event {
 
 
 		public ReciboCreado(Guid idRecibo,NroDocumentoValue nroRecibo,DateTime fechaPago,
-					 PersonNameValue nombrePasajero, Guid codigoReserva,string concepto,
+					 PersonNameValue nombrePasajero,Guid codigoReserva,string concepto,
 					 PrecioValue montoTotal,PrecioValue aCuenta,PrecioValue saldo,
-					 int estado) : base(DateTime.Now) {
+					 int estado) : base(DateTime.Now)
+		{
 			IdRecibo = idRecibo;
 			NroRecibo = nroRecibo;
 			FechaPago = fechaPago;

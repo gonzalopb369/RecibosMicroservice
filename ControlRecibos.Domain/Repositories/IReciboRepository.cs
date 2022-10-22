@@ -8,8 +8,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Domain.Repositories {
-	public interface IReciboRepository : IRepository<Recibo,Guid> {
+namespace ControlRecibos.Domain.Repositories
+{
+	public interface IReciboRepository : IRepository<Recibo,Guid>
+	{
 		Task UpdateAsync(Recibo obj);
 		Task RemoveAsync(Recibo obj);
 		Task<List<Recibo>> GetAll();

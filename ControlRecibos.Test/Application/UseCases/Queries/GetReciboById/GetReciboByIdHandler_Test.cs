@@ -8,8 +8,10 @@ using System;
 using Xunit;
 
 
-namespace ControlRecibos.Test.Application.UseCases.Queries.GetReciboById {
-	public class GetReciboByIdHandler_Test {
+namespace ControlRecibos.Test.Application.UseCases.Queries.GetReciboById
+{
+	public class GetReciboByIdHandler_Test
+	{
 		private readonly Mock<IReciboRepository> reciboRepository;
 		private readonly Mock<ILogger<GetReciboByIdQuery>> logger;
 		//private Guid idRecibo; NO debe haber!!!
@@ -25,14 +27,16 @@ namespace ControlRecibos.Test.Application.UseCases.Queries.GetReciboById {
 		private Recibo reciboTest;
 
 
-		public GetReciboByIdHandler_Test() {
+		public GetReciboByIdHandler_Test()
+		{
 			reciboRepository = new Mock<IReciboRepository>();
 			logger = new Mock<ILogger<GetReciboByIdQuery>>();
 		}
 
 
 		[Fact]
-		public void GetReciboByIdHandler_HandleCorrectly() {           //!!! Concluir
+		public void GetReciboByIdHandler_HandleCorrectly()
+		{           //!!! Concluir
 
 			//reciboRepository.Setup(repository => repository.FindByIdAsync(idRecibo).Result(                
 			//    nroRecibo, fechaPago, nombrePasajero,

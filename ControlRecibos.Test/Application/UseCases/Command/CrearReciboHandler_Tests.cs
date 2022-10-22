@@ -16,8 +16,10 @@ using System.Threading;
 using Xunit;
 
 
-namespace ControlRecibos.Test.Application.UseCases.Command {
-	public class CrearReciboHandler_Tests {
+namespace ControlRecibos.Test.Application.UseCases.Command
+{
+	public class CrearReciboHandler_Tests
+	{
 		private readonly Mock<IReciboRepository> reciboRepository;
 		private readonly Mock<ILogger<CrearReciboHandler>> logger;
 		private readonly Mock<IReciboFactory> reciboFactory;
@@ -36,7 +38,8 @@ namespace ControlRecibos.Test.Application.UseCases.Command {
 		private Recibo reciboTest;
 
 
-		public CrearReciboHandler_Tests() {
+		public CrearReciboHandler_Tests()
+		{
 			reciboRepository = new Mock<IReciboRepository>();
 			logger = new Mock<ILogger<CrearReciboHandler>>();
 			reciboFactory = new Mock<IReciboFactory>();
@@ -48,7 +51,8 @@ namespace ControlRecibos.Test.Application.UseCases.Command {
 
 
 		[Fact]
-		public void CrearReciboHandler_HandleCorrectly() {
+		public void CrearReciboHandler_HandleCorrectly()
+		{
 			reciboFactory.Setup(factory => factory.CrearRecibo(nroRecibo,fechaPago,nombrePasajero,
 					codigoReserva,concepto,montoTotal,aCuenta,saldo,estado))
 					.Returns(reciboTest);
@@ -67,7 +71,8 @@ namespace ControlRecibos.Test.Application.UseCases.Command {
 
 
 		[Fact]
-		public void CrearReciboHandler_Handle_Fail() {
+		public void CrearReciboHandler_Handle_Fail()
+		{
 			// Failing by returning null values
 			var objHandler = new CrearReciboHandler(reciboRepository.Object,logger.Object,
 											reciboService.Object,reciboFactory.Object,

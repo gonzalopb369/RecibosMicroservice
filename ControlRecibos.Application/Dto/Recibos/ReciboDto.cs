@@ -7,7 +7,8 @@ using System;
 
 namespace ControlRecibos.Application.Dto.Recibos
 {
-	public class ReciboDto {
+	public class ReciboDto
+	{
 		public Guid Id { get; set; }
 		public int NroRecibo { get; set; }
 		public DateTime FechaPago { get; set; }
@@ -21,7 +22,8 @@ namespace ControlRecibos.Application.Dto.Recibos
 		public string ACuentaLiteral { get; set; }
 
 
-		public ReciboDto() {
+		public ReciboDto()
+		{
 		}
 	}
 }

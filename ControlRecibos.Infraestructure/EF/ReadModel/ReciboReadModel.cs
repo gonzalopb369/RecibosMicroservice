@@ -1,8 +1,10 @@
 using System;
 
 
-namespace ControlRecibos.Infraestructure.EF.ReadModel {
-	public class ReciboReadModel {
+namespace ControlRecibos.Infraestructure.EF.ReadModel
+{
+	public class ReciboReadModel
+	{
 		public Guid Id { get; set; }
 		public int NroRecibo { get; set; }
 		public DateTime FechaPago { get; set; }

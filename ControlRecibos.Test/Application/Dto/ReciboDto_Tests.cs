@@ -3,10 +3,13 @@ using System;
 using Xunit;
 
 
-namespace ControlRecibos.Test.Application.Dto {
-	public class ReciboDto_Tests {
+namespace ControlRecibos.Test.Application.Dto
+{
+	public class ReciboDto_Tests
+	{
 		[Fact]
-		public void ReciboDto_CheckPropertiesValid() {
+		public void ReciboDto_CheckPropertiesValid()
+		{
 			var idTest = Guid.NewGuid();
 			var nroRecibo = 11;
 			var fechaPago = new DateTime(2022,01,01);

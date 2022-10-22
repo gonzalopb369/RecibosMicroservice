@@ -10,9 +10,12 @@ using System.Reflection;
 //using System.Threading.Tasks;
 
 
-namespace ControlRecibos.Application {
-	public static class Extensions {
-		public static IServiceCollection AddApplication(this IServiceCollection services) {
+namespace ControlRecibos.Application
+{
+	public static class Extensions
+	{
+		public static IServiceCollection AddApplication(this IServiceCollection services)
+		{
 			services.AddMediatR(Assembly.GetExecutingAssembly());
 			services.AddTransient<IReciboService,ReciboService>();
 			services.AddTransient<IReciboFactory,ReciboFactory>();

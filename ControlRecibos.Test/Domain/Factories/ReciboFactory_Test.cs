@@ -3,10 +3,13 @@ using System;
 using Xunit;
 
 
-namespace ControlRecibos.Test.Domain.Factories {
-	public class ReciboFactory_Test {
+namespace ControlRecibos.Test.Domain.Factories
+{
+	public class ReciboFactory_Test
+	{
 		[Fact]
-		public void CrearRecibo_Correctly() {
+		public void CrearRecibo_Correctly()
+		{
 			int nroRecibo = 123;
 			DateTime fechaPago = new DateTime(2022,06,04);
 			string nombrePasajero = "Juan Perez";

@@ -3,10 +3,13 @@ using System;
 using Xunit;
 
 
-namespace ControlRecibos.Test.Application.UseCases.Command {
-	public class CrearReciboCommand_Tests {
+namespace ControlRecibos.Test.Application.UseCases.Command
+{
+	public class CrearReciboCommand_Tests
+	{
 		[Fact]
-		public void CrearReciboCommand_DataValid() {
+		public void CrearReciboCommand_DataValid()
+		{
 			//public Guid Id { get; set; }
 			var nroRecibo = 123;
 			var fechaPago = new DateTime(2022,06,04);
@@ -34,7 +37,8 @@ namespace ControlRecibos.Test.Application.UseCases.Command {
 
 
 		[Fact]
-		public void TestConstructor_IsPrivate() {
+		public void TestConstructor_IsPrivate()
+		{
 			var command = (CrearReciboCommand)Activator.CreateInstance(typeof(CrearReciboCommand),true);
 			Assert.Equal(0,command.NroRecibo);
 			//Assert.Equal(0, command.FechaPago); !!! completar
