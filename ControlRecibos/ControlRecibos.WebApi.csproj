@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="package-lock.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.4.9" />
     <PackageReference Include="AWSSDK.SQS" Version="3.7.2.105" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">

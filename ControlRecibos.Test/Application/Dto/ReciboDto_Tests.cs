@@ -27,7 +27,7 @@ namespace ControlRecibos.Test.Application.Dto
 			Assert.Equal(Guid.Empty,objRecibo.Id);
 			Assert.Equal(0,objRecibo.NroRecibo);
 			Assert.Null(objRecibo.NombrePasajero);
-			Assert.Null(objRecibo.CodigoReserva);
+			//Assert.Null(objRecibo.CodigoReserva);
 			Assert.Null(objRecibo.Concepto);
 			Assert.Equal(new decimal(0.0),objRecibo.MontoTotal);
 			Assert.Equal(new decimal(0.0),objRecibo.ACuenta);
@@ -53,9 +53,7 @@ namespace ControlRecibos.Test.Application.Dto
 			Assert.Equal(aCuenta,objRecibo.ACuenta);
 			Assert.Equal(saldo,objRecibo.Saldo);
 			Assert.Equal(estado,objRecibo.Estado);
-		}
-
-		//var detallePedidoTest = MockFactory.GetDetallePedido();
+		}		
 
 	}
 }
