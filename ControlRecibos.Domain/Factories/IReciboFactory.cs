@@ -17,6 +17,7 @@ namespace ControlRecibos.Domain.Factories
 				Guid codigoReserva,string concepto,decimal montoPagado,
 				decimal aCuenta,decimal saldo,int estado);
 
+		
 		Recibo EliminarRecibo(Recibo oRecibo);
 	}
 }

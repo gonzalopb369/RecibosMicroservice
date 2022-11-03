@@ -2,12 +2,7 @@ using ControlRecibos.Application.Services;
 using ControlRecibos.Domain.Factories;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-//using System.Text;
-//using System.Threading.Tasks;
 
 
 namespace ControlRecibos.Application

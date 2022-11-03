@@ -12,6 +12,6 @@ namespace ControlRecibos.Application.Dto.Pagos
 		public int currentValue { get; set; }
 		public int Amount { get; set; }
 		public Guid Booking { get; set; }
-		public DateTime Date { get; set; }
+		public DateTime Date { get; set; } = DateTime.Now;
 	}
 }

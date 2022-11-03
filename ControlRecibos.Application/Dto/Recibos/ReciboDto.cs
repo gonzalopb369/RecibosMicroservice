@@ -11,7 +11,7 @@ namespace ControlRecibos.Application.Dto.Recibos
 	{
 		public Guid Id { get; set; }
 		public int NroRecibo { get; set; }
-		public DateTime FechaPago { get; set; }
+		public DateTime FechaPago { get; set; } = DateTime.Now;
 		public string NombrePasajero { get; set; }
 		public Guid CodigoReserva { get; set; }
 		public string Concepto { get; set; }

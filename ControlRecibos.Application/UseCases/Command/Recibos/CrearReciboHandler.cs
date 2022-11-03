@@ -20,11 +20,11 @@ namespace ControlRecibos.Application.UseCases.Command.Recibos
 		private readonly IUnitOfWork _unitOfWork;
 
 		public CrearReciboHandler(IReciboRepository reciboRepository,ILogger<CrearReciboHandler> logger,
-			IReciboService reciboService,IReciboFactory reciboFactory,IUnitOfWork unitOfWork)
+			IReciboFactory reciboFactory,IUnitOfWork unitOfWork)
 		{
 			_reciboRepository = reciboRepository;
 			_logger = logger;
-			_reciboService = reciboService;
+			//_reciboService = reciboService; elim. ultimamente
 			_reciboFactory = reciboFactory;
 			_unitOfWork = unitOfWork;
 		}

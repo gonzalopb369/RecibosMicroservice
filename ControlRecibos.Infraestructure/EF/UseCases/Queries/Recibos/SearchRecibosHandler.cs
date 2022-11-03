@@ -28,12 +28,8 @@ namespace ControlRecibos.Infraestructure.EF.UseCases.Queries.Recibos
 		public async Task<ICollection<ReciboDto>> Handle(SearchRecibosQuery request,CancellationToken cancellationToken)
 		{
 			var reciboList = await _recibos
-							.AsNoTracking()
-							//.Where(x => x.NroRecibo == request.NroRecibo)
-							//.Where(x => x.NroRecibo == request.id)
-							.ToListAsync();
-
-			//!!! CORREGIR esto xq no es una coleccion ni tiene detalle
+							.AsNoTracking().ToListAsync();
+			
 			var result = new List<ReciboDto>();
 			foreach (var objRecibo in reciboList)
 			{

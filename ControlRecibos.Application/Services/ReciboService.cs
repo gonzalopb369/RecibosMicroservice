@@ -16,7 +16,7 @@ namespace ControlRecibos.Application.Services
 		public Task<int> GenerarNroReciboAsync() // Debe generar un nro. secuencial de la bd
 		{
 			Random Aleatorio = new Random();
-			int NumAleatorio = Aleatorio.Next(10,9999);
+			int NumAleatorio = Aleatorio.Next(1,9999);
 			return Task.FromResult(NumAleatorio);
 		}
 

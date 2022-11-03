@@ -20,7 +20,7 @@ namespace ControlRecibos.Domain.Factories
 					concepto,montoPagado,aCuenta,saldo,estado);
 		}
 
-
+				
 		public Recibo EliminarRecibo(Recibo oRecibo)
 		{ //!!! AQUI ELIMINAR RECIBO???			
 			return oRecibo;
