@@ -1,16 +1,12 @@
 using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
 using System.Threading;
-//using System.Threading.Tasks;
+
 
 namespace ControlRecibos.Domain.Utils
 {
 	public class NumeroLiteral
 	{
-		string numero = "";
-		//string literal ="";
+		string numero = "";		
 		int numeroComas = 0;
 		static string nombreMoneda;
 

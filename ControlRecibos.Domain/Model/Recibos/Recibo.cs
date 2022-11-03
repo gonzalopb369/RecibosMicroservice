@@ -29,12 +29,15 @@ namespace ControlRecibos.Domain.Model.Recibos
 		}
 
 
-		internal Recibo(int nroRecibo)   // !!! ver. si añadir los demás campos
+		public Recibo(int nroRecibo)   
 		{
-			Id = Guid.NewGuid();
+			//Id = Guid.NewGuid(); rehabilitar?
+			FechaPago = DateTime.Now;
 			NroRecibo = nroRecibo;
-			Estado = (int)EstadoRecibo.ReservaPendiente;
-			//_detalleAsientos = new List<AsientosAeronave>();
+			MontoTotal = 0;
+			ACuenta = 0;
+			Saldo = 0;
+			Estado = (int)EstadoRecibo.ReservaPendiente;			
 		}
 
 
@@ -56,26 +59,25 @@ namespace ControlRecibos.Domain.Model.Recibos
 		}
 
 
-		// Por una reserva que no terminó de pagarla en totalidad se cambia estado a Cancelada
-		//public void CancelarRecibo()
-		//{
-		//    Estado = (int)EstadoRecibo.ReservaCancelada;
-		//}
+		public void CrearRecibo(Guid id, NroDocumentoValue nroRecibo,DateTime fechaPago,
+						PersonNameValue nombrePasajero,Guid codigoReserva,
+						string concepto,PrecioValue montoTotal,PrecioValue aCuenta,
+						PrecioValue saldo,int estado)
+		{
+			Id = id;
+			NroRecibo = nroRecibo;
+			FechaPago = fechaPago;
+			NombrePasajero = nombrePasajero;
+			CodigoReserva = codigoReserva;
+			Concepto = concepto;
+			MontoTotal = montoTotal;
+			ACuenta = aCuenta;
+			Saldo = saldo;
+			Estado = estado;
+		}
 
 
-		// COMENTAR!!!
-		//public void RestarSaldo(PrecioValue montoPagado)
-		//{
-		//    PrecioValue montoResultante = Saldo - montoPagado;
-		//    if (montoResultante > 0)
-		//        Estado = (int)EstadoRecibo.ReservaPendiente;
-		//    else
-		//        Estado = (int)EstadoRecibo.ReservaPagoTotal;
-		//    Saldo = montoResultante;
-		//}
 
-
-		// !!! tendria que generarse solo cuando se pago total o no??
 		public void ConsolidarRecibo()
 		{
 			var evento = new ReciboCreado(Id,NroRecibo,FechaPago,NombrePasajero,

@@ -13,7 +13,8 @@ namespace ControlRecibos.Test.Application.UseCases.Command
 
 		[Fact]
 		public void CrearReciboCommand_DataValid()
-		{			
+		{
+			var id = Guid.NewGuid();
 			var nroRecibo = 123;
 			var fechaPago = new DateTime(2022,06,04);
 			var nombrePasajero = "Juan Perez";
@@ -42,15 +43,10 @@ namespace ControlRecibos.Test.Application.UseCases.Command
 		[Fact]
 		public void TestConstructor_IsPrivate()
 		{
-			var command = (CrearReciboCommand)Activator.CreateInstance(typeof(CrearReciboCommand),true);
-			Assert.Equal(0,command.NroRecibo);			
-			Assert.Null(command.NombrePasajero);
-			//Assert.Null(command.CodigoReserva);
-			Assert.Null(command.Concepto);
+			var command = (CrearReciboCommand)Activator.CreateInstance(typeof(CrearReciboCommand),true);			
 			Assert.Equal(0,command.MontoTotal);
 			Assert.Equal(new decimal(0.0),command.ACuenta);
-			Assert.Equal(new decimal(0.0),command.Saldo);
-			Assert.Equal(0,command.Estado);
+			Assert.Equal(new decimal(0.0),command.Saldo);			
 		}
 	}
 }

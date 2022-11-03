@@ -1,10 +1,7 @@
 using ControlRecibos.Domain.Model.Recibos;
 using MediatR;
 using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+
 
 
 namespace ControlRecibos.Application.UseCases.Command.Recibos
