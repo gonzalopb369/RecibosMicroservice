@@ -92,39 +92,7 @@ namespace ControlRecibos.WebApi.Controllers
 			if (msg.Messages.Count != 0)
 			{
 				var mensaje = msg.Messages[0].Body;
-				JsonNode mensajeNode = JsonNode.Parse(mensaje)!;
-				var mensajeSerializer = System.Text.Json.JsonSerializer.Serialize(mensajeNode["Message"]);
-				dynamic mensajeObj = JsonConvert.DeserializeObject(mensajeSerializer);
-				JObject mensajeObj1 = JObject.Parse(mensajeObj);
-				var mensajeBody = mensajeObj1["body"];
-				var mensajePayment = mensajeBody["payment"];
-				var mensajePassanger = mensajeBody["passanger"];
-				var mensajeBooking = mensajeBody["booking"];
-				string vNombPasajero = (string)mensajePassanger["name"] + (string)mensajePassanger["lastName"];
-				Guid vid = (Guid)mensajePayment["id"];
-				var mensajeAmount = mensajePayment["amount"];
-				int vAmount = (Int32)mensajeAmount["data"];
-				Guid vbooking = (Guid)mensajePayment["booking"];
-				DateTime vdate = (DateTime)mensajeBooking["date"];
-				var mensajeResNumber = mensajeBooking["reservationNumber"];
-				string vreservationNumber = (string)mensajeResNumber["data"];
-				var mensajeAccountReceivable = mensajeBooking["accountReceivable"];
-				var mensajeOriginalValue = mensajeAccountReceivable["originalValue"];
-				int vOriginalValue = (Int32)mensajeOriginalValue["data"];
-				var mensajeCurrentValue = mensajeAccountReceivable["currentValue"];
-				int vcurrentValue = (Int32)mensajeCurrentValue["data"];
-
-				OPago = new PagoDto()
-				{
-					Id = vid,
-					NombPasajero = vNombPasajero,
-					ReservationNumber = vreservationNumber,
-					originalValue = vOriginalValue,
-					currentValue = vcurrentValue,
-					Amount = vAmount,
-					Booking = vbooking,
-					Date = vdate
-				};
+				OPago = JsonConvert.DeserializeObject<PagoDto>(mensaje);
 				return OPago;
 			}
 			else
