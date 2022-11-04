@@ -26,14 +26,14 @@ namespace ControlRecibos.Test.Application.UseCases.Command
 		private readonly Mock<IReciboFactory> reciboFactory;
 		private readonly Mock<IUnitOfWork> unitOfWork;
 		private int nroReciboTest = 369;
-		private DateTime fechaPagoTest = DateTime.Now; //new DateTime(2022,11,11);
+		private DateTime fechaPagoTest = DateTime.Now; 
 		private string nombrePasajeroTest = "Juan Perez";
 		private Guid codigoReservaTest = new Guid("{DDE9DB2E-CE43-44F6-80C0-45ADA8A74B61}");
 		private string conceptoTest = "Adelanto por pasaje Santa Cruz - Tarija";
 		private decimal montoTotalTest = new decimal(770.0);
 		private decimal aCuentaTest = new decimal(300.0);
 		private decimal saldoTest = new decimal(470.0);
-		private int estadoTest = 3; // Reserva pendiente
+		private int estadoTest = 3; 
 		private Recibo reciboTest;
 
 
@@ -44,7 +44,7 @@ namespace ControlRecibos.Test.Application.UseCases.Command
 			reciboService = new Mock<IReciboService>();
 			reciboFactory = new Mock<IReciboFactory>();
 			unitOfWork = new Mock<IUnitOfWork>();
-			reciboTest = new ReciboFactory().CrearRecibo(nroReciboTest,fechaPagoTest, //!!!
+			reciboTest = new ReciboFactory().CrearRecibo(nroReciboTest,fechaPagoTest,
 								nombrePasajeroTest,codigoReservaTest,
 								conceptoTest,montoTotalTest,
 								aCuentaTest,saldoTest,
@@ -57,12 +57,12 @@ namespace ControlRecibos.Test.Application.UseCases.Command
 		{
 			reciboService.Setup(reciboService => reciboService.GenerarNroReciboAsync()).Returns(Task.FromResult(nroReciboTest));
 			reciboFactory.Setup(reciboFactory => reciboFactory.CrearRecibo(nroReciboTest,fechaPagoTest,
-								nombrePasajeroTest,codigoReservaTest, //!!!
+								nombrePasajeroTest,codigoReservaTest,
 								conceptoTest,montoTotalTest,
 								aCuentaTest,saldoTest,
 								estadoTest)).Returns(reciboTest);
 			var objHandler = new CrearReciboHandler(reciboRepository.Object,logger.Object,
-											reciboFactory.Object,
+											reciboService.Object, reciboFactory.Object,
 											unitOfWork.Object);
 			var objRequest = new CrearReciboCommand(nroReciboTest,fechaPagoTest,nombrePasajeroTest,
 					codigoReservaTest,conceptoTest,montoTotalTest,aCuentaTest,saldoTest,estadoTest);
@@ -81,7 +81,7 @@ namespace ControlRecibos.Test.Application.UseCases.Command
 		{
 			// Failing by returning null values
 			var objHandler = new CrearReciboHandler(reciboRepository.Object,logger.Object,
-											reciboFactory.Object,
+											reciboService.Object, reciboFactory.Object,
 											unitOfWork.Object);
 			var objRequest = new CrearReciboCommand(nroReciboTest,fechaPagoTest,nombrePasajeroTest,
 					codigoReservaTest,conceptoTest,montoTotalTest,aCuentaTest,saldoTest,estadoTest);

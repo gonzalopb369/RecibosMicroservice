@@ -1,5 +1,4 @@
 using ControlRecibos.Application.Dto.Recibos;
-//using ControlRecibos.Application.UseCases.Command.Recibos;
 using ControlRecibos.Application.UseCases.Queries.Recibos.GetReciboById;
 using ControlRecibos.Domain.Model.Recibos;
 using ControlRecibos.Domain.Repositories;
