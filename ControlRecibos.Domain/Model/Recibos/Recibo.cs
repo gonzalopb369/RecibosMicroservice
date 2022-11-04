@@ -30,8 +30,7 @@ namespace ControlRecibos.Domain.Model.Recibos
 
 
 		public Recibo(int nroRecibo)   
-		{
-			//Id = Guid.NewGuid(); rehabilitar?
+		{			
 			FechaPago = DateTime.Now;
 			NroRecibo = nroRecibo;
 			MontoTotal = 0;

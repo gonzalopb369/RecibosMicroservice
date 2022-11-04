@@ -2,7 +2,7 @@ using Amazon;
 using Amazon.Runtime;
 using Amazon.SQS;
 using Amazon.SQS.Model;
-using Amazon.SimpleNotificationService;
+//using Amazon.SimpleNotificationService;
 using ControlRecibos.Application.Dto.Recibos;
 using ControlRecibos.Application.Dto.Pagos;
 using ControlRecibos.Application.UseCases.Command.Recibos;
@@ -12,7 +12,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using System.Text.Json;
+//using System.Text.Json;
 using System.Text.Json.Nodes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -55,8 +55,8 @@ namespace ControlRecibos.WebApi.Controllers
 
 
 
-		[HttpDelete]
 		[Route("{id:guid}")]
+		[HttpDelete]
 		public async Task<IActionResult> DeleteReciboById([FromRoute] EliminarReciboCommand command)
 		{
 			Guid vId = await _mediator.Send(command);

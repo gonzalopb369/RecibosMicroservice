@@ -20,11 +20,11 @@ namespace ControlRecibos.Application.UseCases.Command.Recibos
 		private readonly IUnitOfWork _unitOfWork;
 
 		public CrearReciboHandler(IReciboRepository reciboRepository,ILogger<CrearReciboHandler> logger,
-			IReciboFactory reciboFactory,IUnitOfWork unitOfWork)
+			IReciboService reciboService, IReciboFactory reciboFactory,IUnitOfWork unitOfWork)
 		{
 			_reciboRepository = reciboRepository;
 			_logger = logger;
-			//_reciboService = reciboService; elim. ultimamente
+			_reciboService = reciboService;
 			_reciboFactory = reciboFactory;
 			_unitOfWork = unitOfWork;
 		}
@@ -34,9 +34,8 @@ namespace ControlRecibos.Application.UseCases.Command.Recibos
 		{
 			try
 			{
-				int nroRecibo = await _reciboService.GenerarNroReciboAsync();
-				//Recibo objRecibo = _reciboFactory.Create(nroRecibo); Este era el original
-				Recibo objRecibo = _reciboFactory.CrearRecibo(nroRecibo, //nroRecibo !!! Tiene que generar nro. recibo!,
+				int nroRecibo = await _reciboService.GenerarNroReciboAsync();				
+				Recibo objRecibo = _reciboFactory.CrearRecibo(nroRecibo,
 					request.FechaPago,request.NombrePasajero,request.CodigoReserva,
 					request.Concepto,request.MontoTotal,request.ACuenta,request.Saldo,
 					request.Estado);
